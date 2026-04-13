@@ -1,0 +1,49 @@
+
+import Modals from './modals/modals'
+import { loadConfig, loadItemsConfig } from '@/app/utils/components-config'
+import { loadCities, setActiveCity } from '@/app/utils/getCities'
+import ConnectionButton from './connectionButton'
+
+async function Footer({params_city}){
+    const site_config = await loadConfig();
+    const { logo_small, main_icons } = await loadItemsConfig();
+    const { cities_list, cities_list_original } = await loadCities();
+    const activeCity = await setActiveCity(params_city)
+
+    return(
+        <footer>
+            <div className="footer-container">
+                <div className="footer-container-top">
+                    <a href={`/${activeCity.code}`}>
+                        <img className="footer-logo"
+                            alt={`Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`} 
+                            src={logo_small} 
+                        />
+                    </a>
+                    <nav>
+                        <a href="#allOffers">Услуги и предложения</a>
+                        <a href="#infoSection">Преимущества</a>
+                        <a href="#questions">Вопросы</a>
+                    </nav>
+                    
+                    <ConnectionButton /> {/* onClick={() => props.setDealModal({modalName: 'Оставьте заявку', showPhone: true, reachGoal: "zakazatPodkluchenie"})} */}
+                </div>
+                <div className="footer-container-bottom">
+                    <p className="footer-text">{site_config.footer_text}</p>
+                </div>
+            </div>
+            
+            <Modals
+                icons={main_icons}
+                logo_small={logo_small}
+                cities_list={cities_list} 
+                cities_list_original={cities_list_original}
+                connection_phone={site_config.connection_phone} 
+                telegramText={site_config.telegramText} 
+                activeCity={activeCity}
+                params_city={params_city}
+            />
+        </footer>
+    )
+}
+export default Footer;

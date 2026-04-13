@@ -1,0 +1,60 @@
+import { loadYMConfig } from '@/app/mods/YandexMetrika/YandexMetrika_config'
+import { loadConfig, loadItemsConfig } from '@/app/utils/components-config'
+import SupportLink from './supportLink'
+import ModalLink from './modalLink'
+import ConnectionButton from './connectionButton'
+import { setActiveCity } from '@/app/utils/getCities'
+
+async function Header({params_city}){
+    const site_config = await loadConfig();
+    const {header_links, logo} = await loadItemsConfig();
+    const {reachGoals} = await loadYMConfig()
+    const activeCity = await setActiveCity(params_city);
+
+    return(
+        <header>
+            <div className='headerTop'>
+                <div className='headerTop-menuBlock'>
+                    {/* Тут ричгол берем из конфига шапки */}
+                    {
+                        header_links.map((item, index) => (
+                            item.active && 
+                            <ModalLink item={item} key={index}/>
+                        ))
+                    }
+                </div>
+                <div className='headerTop-contactBlock'>
+                    <span className='headerTop-contactBlock-tp_desctop'>Техническая поддержка</span>
+                    <span className='headerTop-contactBlock-tp_mobile'>Тех. Поддержка</span>
+                    <SupportLink
+                        phone={site_config.support_phone}
+                        reachGoals={reachGoals}
+                        hideSupportPhone={site_config.hideSupportPhone}
+                    />
+                </div>
+            </div>
+            <div className='headerBottom'>
+                <div className='headerBottom-leftSide'>
+                    <a href={`/${activeCity.code}`}>
+                        <img className='header-logo' 
+                        alt={`Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`}
+                        src={logo} 
+                        />
+                    </a>
+                    <nav>
+                        <a href="#allOffers">Услуги и предложения</a>
+                        <a href="#infoSection">Преимущества</a>
+                        <a href="#questions">Вопросы</a>
+                    </nav>
+                </div>
+                
+                <div className='headerBottom-rightSide'>
+                    {/* Тут ричгол берем из конфига метрики */}
+                    <ConnectionButton />
+                </div>
+
+            </div>
+            </header>
+    )
+}
+export default Header;
