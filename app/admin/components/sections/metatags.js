@@ -32,7 +32,7 @@ function Metatags(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(server_config.api_host+`/back/updateMeta/${server_config.site_key}`, {
+        await axios.post(`https://${server_config.site_folder}/back/updateMeta/${server_config.site_key}`, {
             metaTags: {...metaTags, OG_IMAGE: `${metaTags.OG_URL}/img/OG_Image.png`},
         },{
             withCredentials: true
@@ -61,7 +61,7 @@ function Metatags(props) {
         formData.append("filename", name);
         
         try {
-            const res = await axios.post(`${server_config.api_host}/upload/replace/${server_config.site_key}?file_path=${path}`, formData);
+            const res = await axios.post(`https://${server_config.site_folder}/upload/replace/${server_config.site_key}?file_path=${path}`, formData);
             
 
             setOG_Image(`/img/OG_Image.png?v=${Date.now()}`)

@@ -24,7 +24,7 @@ export async function loadCities(detectedCity_code = null, isAdmin = false) {
   console.log('Загружаю города', detectedCity_code)
   const site_config = await loadConfig();
   
-  const res = await fetch(server_config.api_host+`/front/getCities/${server_config.site_key}`, {
+  const res = await fetch(`https://${server_config.site_folder}/front/getCities/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: 3600 } })

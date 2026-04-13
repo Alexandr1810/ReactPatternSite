@@ -28,7 +28,7 @@ function YandexMetrika(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(server_config.api_host+`/back/update/YandexMetrika_config/${server_config.site_key}`, {
+        await axios.post(`https://${server_config.site_folder}/back/update/YandexMetrika_config/${server_config.site_key}`, {
             reachGoals: reachGoals,
         },{
             withCredentials: true

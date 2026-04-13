@@ -77,7 +77,7 @@ function Slider(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(server_config.api_host+`/back/update/slider_slides/${server_config.site_key}`, {
+        await axios.post(`https://${server_config.site_folder}/back/update/slider_slides/${server_config.site_key}`, {
             slider_slides: slider_slides,
         },{
             withCredentials: true

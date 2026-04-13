@@ -8,7 +8,7 @@ export async function loadYMConfig(isAdmin = false) {
   let reachGoals = null
   let reachGoals_original = null
 
-  const res = await fetch(server_config.api_host+`/front/getYandexMetrikaConfig/${server_config.site_key}`, {
+  const res = await fetch(`https://${server_config.site_folder}/front/getYandexMetrikaConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: 3600 } })

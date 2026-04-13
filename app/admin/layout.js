@@ -15,9 +15,9 @@ export async function generateMetadata() {
   
   return {
     icons: {
-      icon: `${server_config.api_host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      shortcut: `${server_config.api_host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      apple: `${server_config.api_host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      shortcut: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      apple: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
     openGraph: { // Мета-штуки
       title: title,
@@ -29,7 +29,7 @@ export async function generateMetadata() {
 
       images: [
       {
-        url: `${server_config.api_host}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
+        url: `https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
         alt: `Превью сайта ${site_config.provider_name}`,
       },
     ],

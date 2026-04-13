@@ -6,7 +6,7 @@ export async function middleware(request) {
     const cookie = request.headers.get('cookie') || '';
 
     const res = await fetch(
-      `${server_config.api_host}/auth/me/${server_config.site_key}`,
+      `https://${server_config.site_folder}/auth/me/${server_config.site_key}`,
       {
         headers: {
           cookie, // 🔥 прокидываем ВСЕ cookie как есть
