@@ -14,9 +14,8 @@ function Navigator(props) {
     { id: "adventeges", label: "Преимущества" },
     { id: "faq", label: "Частые вопросы" },
     { id: "metrics", label: "Яндекс Метрика" },
-    { id: "metatags", label: "Метатеги" },
     { id: "abbreviationsList", label: "Список Сокращений" },
-  ];
+  ]; //{ id: "metatags", label: "Метатеги" },
 
   const activeSection = useScrollSpy(sections, 300);
 

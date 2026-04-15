@@ -211,6 +211,7 @@ function PageAdmin({
             showAlert={showAlert}
             validateRequiredFields={validateRequiredFields}
           />
+          {/* 
           <Metatags 
             metatags = {metatags_admin}
             setMetatags = {setMetatags_admin}
@@ -218,6 +219,7 @@ function PageAdmin({
             showAlert={showAlert}
             validateRequiredFields={validateRequiredFields}          
           />
+          */}
           <AbbreviationsList 
             site_config={site_config_admin}
           />

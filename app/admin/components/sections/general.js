@@ -8,6 +8,7 @@ function General(props) {
     const [additionals, setAdditionals] = useState([])
     const [favicon32, setFavicon32] = useState()
     const [favicon16, setFavicon16] = useState()
+    const [OG_Image, setOG_Image] = useState()
     const [active_addImage_item, setActive_addImage_item] = useState(null)
 
     const fileInputRef_logo = useRef(null);
@@ -15,6 +16,7 @@ function General(props) {
 
     const fileInputRef_favicon32 = useRef(null);
     const fileInputRef_favicon16 = useRef(null);
+    const fileInputRef_OG_Image = useRef(null);
 
     const fileInputRef_politika = useRef(null);
     const fileInputRef_sogl = useRef(null);
@@ -36,6 +38,7 @@ function General(props) {
         setAdditionals([...props.main_icons.additionals])
         setFavicon32(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`)
         setFavicon16(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png`)
+        setOG_Image(`https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`)
     },[props.site_config, props.main_icons])
 
 
@@ -90,6 +93,9 @@ function General(props) {
         case 'favicon16':
             fileInputRef_favicon16.current.click();
             break;
+        case 'OG_Image':
+            fileInputRef_OG_Image.current.click();
+            break;
         case 'politika':
             fileInputRef_politika.current.click();
             break;
@@ -128,6 +134,9 @@ function General(props) {
                     break;
                 case 'favicon-16x16.png':
                     setFavicon16(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png?v=${Date.now()}`)
+                    break;
+                case 'OG_Image':
+                    setOG_Image(`https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png?v=${Date.now()}`)
                     break;
             }
         
@@ -261,16 +270,16 @@ ${emptyFields}`)
                         />
                     </div>
                     <div className='logo-editor-item'>
-                        <span>robots.txt:</span>
-                        <div className='imgContainer' onClick={()=>handleClick("robots")}>
-                            <img src={`https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/txt.svg`} />
+                        <span>OG Image (.png):</span>
+                        <div className='imgContainer' onClick={()=>handleClick("OG_Image")}>
+                            <img src={OG_Image} />
                         </div>
                         <input
                             type="file"
-                            ref={fileInputRef_robots}
+                            ref={fileInputRef_OG_Image}
                             style={{ display: "none" }}
-                            accept=".txt"
-                            onChange={(e)=>handleFileChange(e, "robots.txt",`../${server_config.site_folder}/`)}
+                            accept=".png,image/png"
+                            onChange={(e)=>handleFileChange(e, "OG_Image.png",`./uploads/${server_config.site_key}/img`)}
                         />
                     </div>
                 </div>
