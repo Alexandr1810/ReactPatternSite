@@ -20,7 +20,7 @@ export async function generateMetadata({params}) {
   const tarif = allOffers_plans.find(item => item.url_name === name)
 
   const site_config = await loadConfig();
-  const title = `${site_config.provider_name} г.${activeCity.city} | ${tarif.name}`;
+  const title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
   let description = ''
 
   if (tarif.services.includes('internet')) {
