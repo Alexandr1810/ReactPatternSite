@@ -135,7 +135,7 @@ function General(props) {
                 case 'favicon-16x16.png':
                     setFavicon16(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png?v=${Date.now()}`)
                     break;
-                case 'OG_Image':
+                case 'OG_Image.png':
                     setOG_Image(`https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png?v=${Date.now()}`)
                     break;
             }

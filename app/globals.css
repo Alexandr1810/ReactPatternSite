@@ -3086,13 +3086,27 @@ footer{
 .notFound-logo span{
   font-size: 4em;
 }
-.notFound button{
+.notFound  a{
   width: 200px;
-  font-size: 18px;
   position: relative;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Overpass, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: .2s;
+  text-align: center;
+}
+.notFound  a:hover{
+  background-color: var(--secondary-color);
+  color: #000 !important;
 }
 
-.notFound button::after{
+.notFound  a::after{
   content: '';
   background-image: var(--drow_arrow);
   width: 150px;
