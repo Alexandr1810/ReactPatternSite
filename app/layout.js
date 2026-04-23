@@ -1,4 +1,3 @@
-import { domainToASCII } from 'node:url';
 import { Overpass } from "next/font/google";
 import "@/app/globals.css";
 import GlobalContext from '@/app/utils/globalContext';
@@ -23,14 +22,12 @@ export async function generateMetadata() {
   const site_config = await loadConfig();
   const title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в Вашем городе.`;
   const description = `Актуальные тарифы на домашний интернет и ТВ от ${site_config.genitive_provider_name} в Вашем городе! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
-    
-  const host = domainToASCII(server_config.site_folder);
-
+  
   return {
     icons: {
-      icon: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      shortcut: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      apple: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      shortcut: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      apple: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
     openGraph: { // Мета-штуки
       title: title,

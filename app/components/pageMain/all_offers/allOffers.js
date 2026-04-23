@@ -12,7 +12,7 @@ function AllOffers(props) {
     const [canNext, setCanNext] = useState(true)
     const { offers, toggleFieldById, setActiveOffer } = useGlobalContext() 
     
-    const allOffers_plans = offers.filter(plan => plan.cities.includes(props.activeCity.city))
+    const allOffers_plans = offers.filter(plan => plan.cities.includes(props.activeCity.city)).sort((a, b) => a.position - b.position)
 
     const MAX_VELOCITY = 1.2      // px/ms — максимум скорости
     const VELOCITY_SMOOTH = 0.8  // 0..1 — сглаживание
