@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 
+import { domainToASCII } from 'node:url';
 
 import { loadConfig } from '@/app/utils/components-config.js';
 import { setActiveCity } from '@/app/utils/getCities'
@@ -13,14 +14,16 @@ export async function generateMetadata({params}) {
 
   const site_config = await loadConfig();
     
-  const title = `${site_config.provider_name} г.${activeCity.city} | Подключение домашнего интернета и ТВ в Вашем городе.`;
+  const title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в городе ${activeCity.city}.`;
   const description = `Актуальные тарифы на домашний интернет и ТВ от ${site_config.genitive_provider_name} в г.${activeCity.city}! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
+
+  const host = domainToASCII(server_config.site_folder);
 
   return {
     icons: {
-      icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      shortcut: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      apple: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      icon: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      shortcut: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      apple: `https://${host}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
     openGraph: { // Мета-штуки
       title: title,
