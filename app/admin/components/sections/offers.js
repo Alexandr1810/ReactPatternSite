@@ -45,6 +45,9 @@ function Offers(props) {
         speed: 0,
         tv: 0,
         price: 0,
+        sim_gb: 0,
+        sim_min: 0,
+        sim_sms: 0,
         discount_price: 0,
         discount_period: 0,
         discount_description: "",
@@ -83,7 +86,7 @@ function Offers(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`https://${server_config.site_folder}/back/update/offers/${server_config.site_key}`, {
+        await axios.post(`http://${server_config.site_folder}/back/update/offers/${server_config.site_key}`, {
             offers: result,
         },{
             withCredentials: true

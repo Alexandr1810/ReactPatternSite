@@ -16,7 +16,11 @@ async function Footer({params_city}){
                 <div className="footer-container-top">
                     <a href={`/${activeCity.code}`}>
                         <img className="footer-logo"
-                            alt={`Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`} 
+                            alt={Number(site_config.show_city) ?
+                                `Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`
+                                :
+                                `Логотип ${site_config.genitive_provider_name}`
+                            } 
                             src={logo_small} 
                         />
                     </a>
@@ -39,7 +43,7 @@ async function Footer({params_city}){
                 cities_list={cities_list} 
                 cities_list_original={cities_list_original}
                 connection_phone={site_config.connection_phone} 
-                telegramText={site_config.telegramText} 
+                site_config={site_config} 
                 activeCity={activeCity}
                 params_city={params_city}
             />

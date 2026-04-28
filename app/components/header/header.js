@@ -37,7 +37,11 @@ async function Header({params_city}){
                 <div className='headerBottom-leftSide'>
                     <a href={`/${activeCity.code}`}>
                         <img className='header-logo' 
-                        alt={`Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`}
+                        alt={Number(site_config.show_city) ?
+                                `Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`
+                                :
+                                `Логотип ${site_config.genitive_provider_name}`
+                            }
                         src={logo} 
                         />
                     </a>

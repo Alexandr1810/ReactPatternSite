@@ -50,7 +50,7 @@ function Banner(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`https://${server_config.site_folder}/back/update/banner_items/${server_config.site_key}`, {
+        await axios.post(`http://${server_config.site_folder}/back/update/banner_items/${server_config.site_key}`, {
             banner_items: banner_items,
         },{
             withCredentials: true

@@ -1379,6 +1379,18 @@ main .allOffers {
   background: #f4f8fb;
   border-radius: 20px;
 }
+.allOffers-container-inner .elem.mobile, .bestOffers-block-inner .elem.mobile{
+  border: 2px solid var(--primary-color);
+}
+.allOffers-container-inner .elem.mobile .mobile-container, .bestOffers-block-inner .elem.mobile .mobile-container{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.allOffers-container-inner .elem.mobile .mobile-title, .bestOffers-block-inner .elem.mobile .mobile-title{
+  color: var(--primary-color);
+  font-weight: 600;
+}
 .allOffers-container-inner .elems, .bestOffers-block-inner.elems{
   flex: 1 1;
 }

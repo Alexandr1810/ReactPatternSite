@@ -34,10 +34,10 @@ function colorMix(hex1, hex2, percent = 50) {
 export async function loadStyles(isAdmin = false) {
   console.log('Загружаю стили')
 
-  const res = await fetch(`https://${server_config.site_folder}/front/getSiteConfig/${server_config.site_key}`, {
+  const res = await fetch(`http://${server_config.site_folder}/front/getSiteConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
-      : { next: { revalidate: 3600 } })
+      : { next: { revalidate: server_config.сaching_period } })
   });
   const data = await res.json();
 

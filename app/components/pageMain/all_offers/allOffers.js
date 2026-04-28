@@ -160,7 +160,8 @@ function AllOffers(props) {
         internetPlans: false,
         iptvPlans: false,
         ktvPlans: false,
-        additionalsPlans: false
+        additionalsPlans: false,
+        simPlans: false
     })
     const [filteredPlans, seFilteredPlans] = useState([...allOffers_plans])
 
@@ -178,6 +179,7 @@ function AllOffers(props) {
             if (tarifFilter.internetPlans && !plan.services.includes('internet')) return false
             if (tarifFilter.iptvPlans && !plan.services.includes('iptv')) return false
             if (tarifFilter.ktvPlans && !plan.services.includes('ktv')) return false
+            if (tarifFilter.simPlans && !plan.services.includes('sim')) return false
             if (tarifFilter.additionalsPlans && !plan.plan_additionals.length) return false
             if (tarifFilter.additionalsPlans && plan.plan_additionals.length) return true
 

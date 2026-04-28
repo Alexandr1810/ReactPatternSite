@@ -15,7 +15,11 @@ function MapForm({site_config, activeCity, map_img, reachGoals}){
                 </div>
                 <div className='mapFormSection-map'>
                     <img 
-                    alt={`Проверить адрес подключения ${site_config.genitive_provider_name} г.${activeCity.city}`} 
+                    alt={Number(site_config.show_city) ?
+                        `Проверить адрес подключения ${site_config.genitive_provider_name} в г.${activeCity.city}`
+                        :
+                        `Проверить адрес подключения ${site_config.genitive_provider_name}`
+                    } 
                     src={map_img} 
                     />
                 </div>

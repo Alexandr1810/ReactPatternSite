@@ -1,11 +1,15 @@
 import React from 'react'
 import { loadConfig } from '@/app/utils/components-config'
 
-function Slide({index, activeSlide, slide, activeCity, provider_name}){ //'slider-textBlock-elem'
+function Slide({index, activeSlide, slide, activeCity, site_config}){ //'slider-textBlock-elem'
     return(
         <div className={index === activeSlide ? 'slider-textBlock-elem': 'd-none'}>
             <img 
-                alt={`${slide.title} ${provider_name} г.${activeCity}`}
+                alt={Number(site_config.show_city) ?
+                    `${slide.title} ${site_config.provider_name} г.${activeCity}`
+                    :
+                    `${slide.title} ${site_config.provider_name}`
+                }
                 src={slide.image} 
                 className='slider-textBlock-image' 
             />

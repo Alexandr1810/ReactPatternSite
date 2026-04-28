@@ -24,10 +24,10 @@ export async function loadCities(detectedCity_code = null, isAdmin = false) {
   console.log('Загружаю города', detectedCity_code)
   const site_config = await loadConfig();
   
-  const res = await fetch(`https://${server_config.site_folder}/front/getCities/${server_config.site_key}`, {
+  const res = await fetch(`http://${server_config.site_folder}/front/getCities/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
-      : { next: { revalidate: 3600 } })
+      : { next: { revalidate: server_config.сaching_period } })
   });
 
   const data = await res.json();
@@ -53,7 +53,12 @@ export async function loadCities(detectedCity_code = null, isAdmin = false) {
   }else{
     //Если нет сортировки по регионам - просто закидываем все в массив
     cities_list_original.forEach(element => {
-      cities_list.push(element.city)
+      console.log('cities_list', cities_list)
+      try{
+        cities_list.push(element.city)
+      }catch(e){
+        cities_list.cities_list.push(element.city)
+      }
     });;
     cities_list = prepareCities_byLiters(cities_list, detectedCity)
   }
@@ -110,7 +115,7 @@ function prepareCities_byLiters(cities_list, detectedCity = null) {
 
     activeCity = {
       city: clientCity,
-      code: props.cities_list_original.find(item => item.city === clientCity).code,
+      code: cities_list_original.find(item => item.city === clientCity).code,
       detected: false,
       selected: false,
       saved: false,

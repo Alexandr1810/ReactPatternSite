@@ -36,9 +36,9 @@ function General(props) {
     useEffect(()=>{
         setSite_config({...props.site_config})
         setAdditionals([...props.main_icons.additionals])
-        setFavicon32(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`)
-        setFavicon16(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png`)
-        setOG_Image(`https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`)
+        setFavicon32(`http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`)
+        setFavicon16(`http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png`)
+        setOG_Image(`http://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`)
     },[props.site_config, props.main_icons])
 
 
@@ -119,24 +119,24 @@ function General(props) {
 
         
         try {
-            const res = await axios.post(`https://${server_config.site_folder}/upload/replace/${server_config.site_key}?file_path=${path}`, formData);
+            const res = await axios.post(`http://${server_config.site_folder}/upload/replace/${server_config.site_key}?file_path=${path}`, formData);
             
             console.log(res)
             switch(name) {
                 case 'logo.webp':
-                    props.setLogo(`https://${server_config.site_folder}/uploads/${server_config.site_key}/${res.data.filename}?v=${Date.now()}`);
+                    props.setLogo(`http://${server_config.site_folder}/uploads/${server_config.site_key}/${res.data.filename}?v=${Date.now()}`);
                     break;
                 case 'logo_small.svg':
-                    props.setLogo_small(`https://${server_config.site_folder}/uploads/${server_config.site_key}/${res.data.filename}?v=${Date.now()}`,);
+                    props.setLogo_small(`http://${server_config.site_folder}/uploads/${server_config.site_key}/${res.data.filename}?v=${Date.now()}`,);
                     break;
                 case 'favicon-32x32.png':
-                    setFavicon32(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png?v=${Date.now()}`)
+                    setFavicon32(`http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png?v=${Date.now()}`)
                     break;
                 case 'favicon-16x16.png':
-                    setFavicon16(`https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png?v=${Date.now()}`)
+                    setFavicon16(`http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-16x16.png?v=${Date.now()}`)
                     break;
                 case 'OG_Image.png':
-                    setOG_Image(`https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png?v=${Date.now()}`)
+                    setOG_Image(`http://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png?v=${Date.now()}`)
                     break;
             }
         
@@ -156,7 +156,7 @@ function General(props) {
 ${emptyFields}`)
                 return;
             }
-            await axios.post(`https://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
+            await axios.post(`http://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
                 site_config: site_config,
                 additionals: additionals
             },{
@@ -246,7 +246,7 @@ ${emptyFields}`)
                     <div className='logo-editor-item'>
                         <span>Политика конф-ти:</span>
                         <div className='imgContainer' onClick={()=>handleClick("politika")}>
-                            <img src={`https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pdf.svg`}  />
+                            <img src={`http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pdf.svg`}  />
                         </div>
                         <input
                             type="file"
@@ -259,7 +259,7 @@ ${emptyFields}`)
                     <div className='logo-editor-item'>
                         <span>Согласие на обработку перс..:</span>
                         <div className='imgContainer' onClick={()=>handleClick("sogl")}>
-                            <img src={`https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pdf.svg`} />
+                            <img src={`http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pdf.svg`} />
                         </div>
                         <input
                             type="file"

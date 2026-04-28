@@ -14,7 +14,11 @@ function AdvantagesItem({site_config, index, activeCity, advantagesItem}) {
   return (
     <div className={`advantages-block ${inView ? 'visible' : ''}`} ref={ref} >
         <img
-            alt={`${imgAlts[index]} ${site_config.genitive_provider_name} в г.${activeCity.city}`} 
+            alt={Number(site_config.show_city) ?
+              `${imgAlts[index]} ${site_config.genitive_provider_name} в г.${activeCity.city}`
+              :
+              `${imgAlts[index]} ${site_config.genitive_provider_name}`
+            } 
             src={advantagesItem.image} 
         />
 

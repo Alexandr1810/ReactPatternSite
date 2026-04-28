@@ -90,7 +90,11 @@ function SpeedPreview({site_config, activeCity, logo_small}) {
                     </button> */}
             </div>
             <div className="speedPreview-logoBlock">
-              <img src={logo_small} alt={`Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity}`} />
+              <img src={logo_small} alt={Number(site_config.show_city) ?
+                `Логотип ${site_config.genitive_provider_name} - интернет-провайдер в г.${activeCity.city}`
+                :
+                `Логотип ${site_config.genitive_provider_name}`
+              } />
               {!Number(site_config.hideProviderName_onBanner) && (<span>{site_config.provider_name}</span>)}
             </div>
           </div>

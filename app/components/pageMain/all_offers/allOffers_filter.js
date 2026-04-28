@@ -21,6 +21,11 @@ function AllOffers_Filter(props){
                 <input onChange={()=>props.setFilter('ktvPlans')} type='checkbox' checked={props.tarifFilter.ktvPlans}/>
                 <span>Кабельное ТВ</span>
             </label>}
+            {props.allOffers_plans.filter(plan => plan.services.includes('sim')).length > 0 &&
+            <label className='allOffers-filter-item'>
+                <input onChange={()=>props.setFilter('simPlans')} type='checkbox' checked={props.tarifFilter.simPlans}/>
+                <span>Мобильная связь</span>
+            </label>}
             {props.allOffers_plans.filter(plan => plan.plan_additionals.length).length > 0 &&
             <label className='allOffers-filter-item'>
                 <input onChange={()=>props.setFilter('additionalsPlans')} type='checkbox' checked={props.tarifFilter.additionalsPlans}/>

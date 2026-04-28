@@ -45,7 +45,7 @@ function Cities(props) {
         alert(`Не все поля заполнены!`)
         return;
       }
-      await axios.post(`https://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
+      await axios.post(`http://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
         site_config: {
           sortCity_regions: String(sortCity_regions)
         }
@@ -53,13 +53,13 @@ function Cities(props) {
         withCredentials: true
       }).then((response) => {
         console.log(response)
-        props.setSite_config(site_config)
+        //props.setSite_config(site_config)
       }).catch((error) => {
         console.error(error)
         props.showAlert("errorAlert")
       })
 
-      await axios.post(`https://${server_config.site_folder}/back/update/cities_list/${server_config.site_key}`, {
+      await axios.post(`http://${server_config.site_folder}/back/update/cities_list/${server_config.site_key}`, {
         cities_list: cities_list
       },{
         withCredentials: true
@@ -86,11 +86,11 @@ function Cities(props) {
             <div className='cities-settings'>
               <h3>Сортировка</h3>
               <label className='radio-label'>
-                  <input type='radio' name='sortCity_regions' checked={Number(sortCity_regions) === 0} onChange={()=>setSortCity_regions("0")} />
+                  <input type='radio' name='sortCity_regions' disabled checked={Number(sortCity_regions) === 0} onChange={()=>setSortCity_regions("0")} />
                   <span className='label-title'>По алфавиту</span>
               </label>
               <label className='radio-label'>
-                  <input type='radio' name='sortCity_regions' checked={Number(sortCity_regions) === 1} onChange={()=>setSortCity_regions("1")} />
+                  <input type='radio' name='sortCity_regions' disabled checked={Number(sortCity_regions) === 1} onChange={()=>setSortCity_regions("1")} />
                   <span className='label-title'>По регионам</span>
               </label>
             </div>

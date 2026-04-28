@@ -3,10 +3,11 @@
 import {openModal, closeModal} from '@/app/utils/functions'
 import React, {useEffect} from 'react'
 
-export default function SelectСity({activeCity, params_city}) {
-
+export default function SelectСity({activeCity, params_city, site_config}) {
+  
+  //Кидаем алерт если не выбран город
   useEffect(() => {
-    if (!params_city) openModal('CityAlert')
+    if (!params_city && Number(site_config.show_city)) openModal('CityAlert')
   }, []);
 
   return (

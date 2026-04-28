@@ -8,10 +8,10 @@ export async function loadYMConfig(isAdmin = false) {
   let reachGoals = null
   let reachGoals_original = null
 
-  const res = await fetch(`https://${server_config.site_folder}/front/getYandexMetrikaConfig/${server_config.site_key}`, {
+  const res = await fetch(`http://${server_config.site_folder}/front/getYandexMetrikaConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
-      : { next: { revalidate: 3600 } })
+      : { next: { revalidate: server_config.сaching_period } })
   });
   
   const data = await res.json();

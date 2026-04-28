@@ -8,7 +8,7 @@ import DealModal from '@/app/components/footer/modals/dealModal'
 import { openModal, closeModal } from '@/app/utils/functions'
 import { loadYMConfig } from '@/app/mods/YandexMetrika/YandexMetrika_config.js'
 
-async function Modals({icons, logo_small, cities_list, cities_list_original, activeCity, params_city, connection_phone, telegramText}){
+async function Modals({icons, logo_small, cities_list, cities_list_original, activeCity, params_city, connection_phone, site_config}){
     const {reachGoals} = await loadYMConfig()
     return(
         <section className="modalsSection">
@@ -33,6 +33,7 @@ async function Modals({icons, logo_small, cities_list, cities_list_original, act
                 activeCity={activeCity} 
                 cities_list_original={cities_list_original}
                 params_city={params_city}
+                site_config={site_config}
             />
             <DealModal 
                 closeModal={closeModal}
@@ -44,15 +45,15 @@ async function Modals({icons, logo_small, cities_list, cities_list_original, act
             />
             <SendDoneModal 
                 closeModal={closeModal}
-                telegramText={telegramText} 
+                telegramText={site_config.telegramText} 
             />
             <SendAlarmModal 
                 closeModal={closeModal}
-                telegramText={telegramText} 
+                telegramText={site_config.telegramText} 
             />
             <SendErrorModal 
                 closeModal={closeModal}
-                telegramText={telegramText} 
+                telegramText={site_config.telegramText} 
             />
             
         </section>

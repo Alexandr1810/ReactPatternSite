@@ -40,7 +40,7 @@ function FrontHeader(props) {
         alert(`Не все поля заполнены!`)
         return;
       }
-      await axios.post(`https://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
+      await axios.post(`http://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
         site_config: {
           hideSupportPhone: String(hideSupportPhone)
         }
@@ -53,7 +53,7 @@ function FrontHeader(props) {
         props.showAlert("errorAlert")
       })
 
-      await axios.post(`https://${server_config.site_folder}/back/update/headerLinks/${server_config.site_key}`, {
+      await axios.post(`http://${server_config.site_folder}/back/update/headerLinks/${server_config.site_key}`, {
         header_links: header_links
       },{
         withCredentials: true

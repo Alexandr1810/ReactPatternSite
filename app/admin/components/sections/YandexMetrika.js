@@ -22,13 +22,13 @@ function YandexMetrika(props) {
   async function saveYandexMetrika(){
     try{
         console.log(reachGoals)
-        const isValid = props.validateRequiredFields(reachGoals, ['parameter', 'value']);
+        const isValid = props.validateRequiredFields(reachGoals, ['parameter']);
 
         if (!isValid) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`https://${server_config.site_folder}/back/update/YandexMetrika_config/${server_config.site_key}`, {
+        await axios.post(`http://${server_config.site_folder}/back/update/YandexMetrika_config/${server_config.site_key}`, {
             reachGoals: reachGoals,
         },{
             withCredentials: true
@@ -58,7 +58,7 @@ function YandexMetrika(props) {
                     <label><span className='label-title'>Параметр:</span>
                     <input type='text' id={item.id} name='parameter' placeholder='Параметр' value={item.parameter} onChange={handleChange} /></label>
                     <label><span className='label-title'>Значение:</span>
-                    <input type='text' id={item.id} name='value' placeholder='Регион/область' value={item.value} onChange={handleChange} /></label>
+                    <input type='text' id={item.id} name='value' placeholder='Значение' value={item.value} onChange={handleChange} /></label>
                   </div>
                 </div>
               ))}

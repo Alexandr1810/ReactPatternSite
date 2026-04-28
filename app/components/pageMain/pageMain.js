@@ -30,13 +30,14 @@ async function PageMain({params_city}){
     <main>
         <Slider 
             slider_slides={slider_slides} 
-            provider_name = {site_config.provider_name}
+            site_config = {site_config}
             activeCity={activeCity}
             reachGoals={reachGoals}
         />
         <Best_Offers 
             activeCity={activeCity}
             main_icons={main_icons}
+            site_config={site_config}
         />
         <AllOffers 
             logo_small={logo_small}

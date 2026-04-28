@@ -55,6 +55,15 @@ function OfferRow(props) {
           <label><span className='label-title'>Кол-во каналов:</span>
           <input type='text' id={offer.id} name='tv' placeholder="Кол-во каналов" value={offer.tv} onChange={handleChange} /></label>
 
+          <label><span className='label-title'>Гигабайт (сим):</span>
+          <input type='text' id={offer.id} name='sim_gb' placeholder="Кол-во гигабайт" value={offer.sim_gb} onChange={handleChange} /></label>
+
+          <label><span className='label-title'>Минут (сим):</span>
+          <input type='text' id={offer.id} name='sim_min' placeholder="Кол-во минут" value={offer.sim_min} onChange={handleChange} /></label>
+
+          <label><span className='label-title'>СМС (сим):</span>
+          <input type='text' id={offer.id} name='sim_sms' placeholder="Кол-во смс" value={offer.sim_sms} onChange={handleChange} /></label>
+
           <label><span className='label-title'>Цена:</span>
           <input type='text' id={offer.id} name='price' placeholder="0" value={offer.price} onChange={handleChange} /></label>
 
@@ -109,6 +118,7 @@ function OfferRow(props) {
                 <option value="internet">Интернет</option>
                 <option value="iptv">Цифровое ТВ</option>
                 <option value="ktv">Кабельное ТВ</option>
+                <option value="sim">Сим-карта</option>
                 </select>
             </div>
             </div>

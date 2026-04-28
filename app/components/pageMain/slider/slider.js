@@ -6,7 +6,7 @@ import Slide from './slide'
 import SliderNav from './slider_nav'
 
 
-function Slider({slider_slides, activeCity, provider_name, reachGoals}){
+function Slider({slider_slides, activeCity, site_config, reachGoals}){
 
     const [state, setState] = useState({
         slider: [...slider_slides.filter(slide => slide.visible)],
@@ -102,14 +102,14 @@ function Slider({slider_slides, activeCity, provider_name, reachGoals}){
                                 slide={slide} 
                                 activeSlide={activeSlide} 
                                 activeCity={activeCity.city} 
-                                provider_name={provider_name}
+                                site_config={site_config}
                             />
                         ))
                     }
                 </div>
                 
                 <div className='slider-formBlock'>
-                    <h1 className='slider-formBlock-title'>Подключить {provider_name} в городе {activeCity.city}</h1>
+                    <h1 className='slider-formBlock-title'>Подключить {site_config.provider_name} {Number(site_config.show_city) ? `в городе ${activeCity.city}` : ''}</h1>
                     <Form 
                         reachGoal="mainForm" 
                         reachGoals={reachGoals}

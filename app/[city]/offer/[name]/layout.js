@@ -20,37 +20,54 @@ export async function generateMetadata({params}) {
   const tarif = allOffers_plans.find(item => item.url_name === name)
 
   const site_config = await loadConfig();
-  const title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
-  let description = ''
+  
+  let title, description = '';
 
-  if (tarif.services.includes('internet')) {
-    description += `Домашний Интернет со скоростью ${tarif.speed} Мб/сек`
+  if (server_config.site_key !== 'domatelecom') {
+    title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
+
+    if (tarif.services.includes('internet')) {
+      description += `Домашний Интернет со скоростью ${tarif.speed} Мб/сек`
+    }
+    if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
+      description += ` и ТВ на ${tarif.tv} каналов`
+    }
+    else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
+      description += `ТВ на ${tarif.tv} каналов`
+    }
+    description += ` в городе ${activeCity.city} по цене ${tarif.price} Р/мес. Подключайся выгодно!`
+  }else{
+    title = `${site_config.provider_name} | Тариф ${tarif.name}`;
+    
+    if (tarif.services.includes('internet')) {
+      description += `Домашний Интернет со скоростью ${tarif.speed} Мб/сек`
+    }
+    if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
+      description += ` и ТВ на ${tarif.tv} каналов`
+    }
+    else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
+      description += `ТВ на ${tarif.tv} каналов`
+    }
+    description += `по цене ${tarif.price} Р/мес. Подключайся выгодно!`
   }
-  if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
-    description += ` и ТВ на ${tarif.tv} каналов`
-  }
-  else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
-    description += `ТВ на ${tarif.tv} каналов`
-  }
-  description += ` в городе ${activeCity.city} по цене ${tarif.price} Р/мес. Подключайся выгодно!`
 
   return {
     icons: {
-      icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      shortcut: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      apple: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      shortcut: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      apple: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
     openGraph: { // Мета-штуки
       title: title,
       description: description,
-      url: `https://${server_config.site_folder}/`,
+      url: `http://${server_config.site_folder}/`,
       siteName: site_config.provider_name,
       type: 'website', // og:type
       locale: 'ru_RU',
 
       images: [
       {
-        url: `https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
+        url: `http://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
         alt: `Превью сайта ${site_config.provider_name}`,
       },
     ],
