@@ -14,6 +14,7 @@
 # next.js
 /.next/
 /out/
+/app/utils/server_config.js
 
 # production
 /build
@@ -27,6 +28,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
 
 # env files (can opt-in for committing if needed)
 .env*

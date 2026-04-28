@@ -42,7 +42,7 @@ function addItem(){
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`http://${server_config.site_folder}/back/update/questions/${server_config.site_key}`, {
+        await axios.post(`https://${server_config.site_folder}/back/update/questions/${server_config.site_key}`, {
             questions_items: questions_items,
         },{
             withCredentials: true

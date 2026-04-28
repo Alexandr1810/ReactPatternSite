@@ -173,7 +173,7 @@ function Form ({
             <input type="text" value={form.addres} name="addres" placeholder='Введите адрес' onChange={handleChange} />
             <label className='politicBlock'>
                 <input type='checkbox' className={`politicCheckbox ${NullFields.politicCheckbox ? 'NullFields' : ''}`} name='politicCheckbox' onChange={handleChange} />
-                <span className='politicText'>Я подтверждаю ознакомление с <a href={`http://${server_config.site_folder}/uploads/${server_config.site_key}/politics/politika.pdf`} target="_blank" >Политикой обработки персональных данных</a> и даю <a href={`http://${server_config.site_folder}/uploads/${server_config.site_key}/politics/sogl.pdf`} target="_blank" >Согласие на обработку моих персональных данных.</a></span>
+                <span className='politicText'>Я подтверждаю ознакомление с <a href={`https://${server_config.site_folder}/uploads/${server_config.site_key}/politics/politika.pdf`} target="_blank" >Политикой обработки персональных данных</a> и даю <a href={`https://${server_config.site_folder}/uploads/${server_config.site_key}/politics/sogl.pdf`} target="_blank" >Согласие на обработку моих персональных данных.</a></span>
             </label>
             
             <button type='submit' className={`dealForm-button ${isSending ? 'sending' : ''}`} disabled={isSending}

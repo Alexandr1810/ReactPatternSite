@@ -10,7 +10,7 @@ export async function loadConfig(isAdmin = false) {
   console.log('Загружаю основной конфиг')
   let site_config;
 
-  const res = await fetch(`http://${server_config.site_folder}/front/getSiteConfig/${server_config.site_key}`, {
+  const res = await fetch(`https://${server_config.site_folder}/front/getSiteConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: 0 } }) //3600
@@ -38,7 +38,7 @@ export async function loadContext(isAdmin = false){
   let additionalsImages = null
 
   const allIcons_res = await fetch(
-    `http://${server_config.site_folder}/uploads/list/${server_config.site_key}/icons`, {
+    `https://${server_config.site_folder}/uploads/list/${server_config.site_key}/icons`, {
       ...(isAdmin
         ? { cache: 'no-store' }
         : { next: { revalidate: server_config.сaching_period } })
@@ -49,13 +49,13 @@ export async function loadContext(isAdmin = false){
 
   allIcons = allIcons_data.files.map(file => ({
     name: file,
-    src: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${file}`
+    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${file}`
   }));
   console.log(allIcons)
 
   allIcons.forEach((icon) => {
     const varName = `--${icon.name.replace(/\.[^/.]+$/, "")}`; // удаляем расширение
-    const url = `url(http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${icon.name})`;
+    const url = `url(https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${icon.name})`;
     //document.documentElement.style.setProperty(varName, url);
     allIconsCss += `
     ${varName}: ${url};
@@ -64,7 +64,7 @@ export async function loadContext(isAdmin = false){
   allIconsCss += `}`
 
   const allSliderImages_res = await fetch(
-    `http://${server_config.site_folder}/uploads/list/${server_config.site_key}/slider`, {
+    `https://${server_config.site_folder}/uploads/list/${server_config.site_key}/slider`, {
       ...(isAdmin
         ? { cache: 'no-store' }
         : { next: { revalidate: server_config.сaching_period } })
@@ -75,12 +75,12 @@ export async function loadContext(isAdmin = false){
 
   allSliderImages = allSliderImages_data.files.map(file => ({
     name: file,
-    src: `http://${server_config.site_folder}/uploads/${server_config.site_key}/slider/${file}`
+    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/slider/${file}`
   }));
   console.log(allSliderImages)
 
   const advantagesImages_res = await fetch(
-    `http://${server_config.site_folder}/uploads/list/${server_config.site_key}/advantages`, {
+    `https://${server_config.site_folder}/uploads/list/${server_config.site_key}/advantages`, {
       ...(isAdmin
         ? { cache: 'no-store' }
         : { next: { revalidate: server_config.сaching_period } })
@@ -91,11 +91,11 @@ export async function loadContext(isAdmin = false){
 
   advantagesImages = advantagesImages_data.files.map(file => ({
     name: file,
-    src: `http://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${file}`
+    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${file}`
   }));
 
   const additionalsImages_res = await fetch(
-    `http://${server_config.site_folder}/uploads/list/${server_config.site_key}/additionals`, {
+    `https://${server_config.site_folder}/uploads/list/${server_config.site_key}/additionals`, {
       ...(isAdmin
         ? { cache: 'no-store' }
         : { next: { revalidate: server_config.сaching_period } })
@@ -106,7 +106,7 @@ export async function loadContext(isAdmin = false){
 
   additionalsImages = additionalsImages_data.files.map(file => ({
     name: file,
-    src: `http://${server_config.site_folder}/uploads/${server_config.site_key}/additionals/${file}`
+    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/additionals/${file}`
   }));
   console.log(additionalsImages)
 
@@ -151,7 +151,7 @@ export async function loadItemsConfig(isAdmin = false) {
   let OfferDescriptions_items_undecoded = null;
   let OfferDescriptions_items = null;
 
-  const res = await fetch(`http://${server_config.site_folder}/front/getItemsConfig/${server_config.site_key}`, {
+  const res = await fetch(`https://${server_config.site_folder}/front/getItemsConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: server_config.сaching_period } })
@@ -160,23 +160,23 @@ export async function loadItemsConfig(isAdmin = false) {
   console.log(data)
 
 
-  logo = `http://${server_config.site_folder}/uploads/${server_config.site_key}/logo.webp`
-  logo_small = `http://${server_config.site_folder}/uploads/${server_config.site_key}/logo_small.svg`
-  map_img = `http://${server_config.site_folder}/uploads/${server_config.site_key}/other/map.webp`
-  //document.documentElement.style.setProperty('--map', `url(http://${server_config.site_folder}/uploads/${server_config.site_key}/other/map.png)`);
+  logo = `https://${server_config.site_folder}/uploads/${server_config.site_key}/logo.webp`
+  logo_small = `https://${server_config.site_folder}/uploads/${server_config.site_key}/logo_small.svg`
+  map_img = `https://${server_config.site_folder}/uploads/${server_config.site_key}/other/map.webp`
+  //document.documentElement.style.setProperty('--map', `url(https://${server_config.site_folder}/uploads/${server_config.site_key}/other/map.png)`);
 
   main_icons = {
-    inet_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/inet-icon.svg`,
-    tv_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/tv-icon.svg`,
-    sales_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/sales-icon.svg`,
-    unlim_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/unlim.svg`,
-    router_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/router.svg`,
-    pristavka_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pristavka.svg`,
-    sim_card: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/sim_card.svg`,
-    phone: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/phone.svg`,
-    i_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/i-icon.svg`,
-    feather_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/feather.svg`,
-    close_icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/close.svg`,
+    inet_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/inet-icon.svg`,
+    tv_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/tv-icon.svg`,
+    sales_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/sales-icon.svg`,
+    unlim_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/unlim.svg`,
+    router_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/router.svg`,
+    pristavka_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/pristavka.svg`,
+    sim_card: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/sim_card.svg`,
+    phone: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/phone.svg`,
+    i_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/i-icon.svg`,
+    feather_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/feather.svg`,
+    close_icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/close.svg`,
     // Иконки для дополнительных услуг
     additionals: []
   }
@@ -189,22 +189,22 @@ export async function loadItemsConfig(isAdmin = false) {
   // --- Главный слайдер на первой странице --- //
   slider_slides = data.data.slider_slides;
   slider_slides.forEach((slide) => {
-    slide.image = `http://${server_config.site_folder}/uploads/${server_config.site_key}/slider/${slide.original_image}`;
-    slide.icons = slide.original_icons.map(icon => `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${icon}.svg`
+    slide.image = `https://${server_config.site_folder}/uploads/${server_config.site_key}/slider/${slide.original_image}`;
+    slide.icons = slide.original_icons.map(icon => `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${icon}.svg`
     );
   })
 
   // --- Баннер на главной странице --//
   banner_items = JSON.parse(keysDictionary(JSON.stringify(data.data.banner_items)));
   banner_items.forEach((item) => {
-    item.icon = `http://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${item.original_icon}.svg`
+    item.icon = `https://${server_config.site_folder}/uploads/${server_config.site_key}/icons/${item.original_icon}.svg`
   })
 
   // --- Блок преимуществ --- //
   adventages_items_undecoded = data.data.advantages_items
   adventages_items = JSON.parse(keysDictionary(JSON.stringify(data.data.advantages_items)));
   adventages_items.forEach((item) => {
-    item.image = `http://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${item.original_image}`
+    item.image = `https://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${item.original_image}`
   })
 
   // --- Блок вопросов --- //
@@ -217,7 +217,7 @@ export async function loadItemsConfig(isAdmin = false) {
 
   main_icons.additionals = data.data.additionals
   main_icons.additionals.forEach((item) => {
-    item.img = `http://${server_config.site_folder}/uploads/${server_config.site_key}/additionals/${item.original_img}`
+    item.img = `https://${server_config.site_folder}/uploads/${server_config.site_key}/additionals/${item.original_img}`
   })
 
   return{
@@ -245,7 +245,7 @@ export async function loadMetatags(isAdmin = false) {
   let metatags = null;
 
   const metatags_res = await fetch(
-    `http://${server_config.site_folder}/front/getMetaConfig/${server_config.site_key}`, {
+    `https://${server_config.site_folder}/front/getMetaConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: server_config.сaching_period } })

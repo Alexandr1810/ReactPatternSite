@@ -15,21 +15,21 @@ export async function generateMetadata() {
   
   return {
     icons: {
-      icon: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      shortcut: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
-      apple: `http://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      icon: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      shortcut: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+      apple: `https://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
     openGraph: { // Мета-штуки
       title: title,
       description: description,
-      url: `http://${server_config.site_folder}/`,
+      url: `https://${server_config.site_folder}/`,
       siteName: site_config.provider_name,
       type: 'website', // og:type
       locale: 'ru_RU',
 
       images: [
       {
-        url: `http://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
+        url: `https://${server_config.site_folder}/uploads/${server_config.site_key}/img/OG_Image.png`, // абсолютный URL
         alt: `Превью сайта ${site_config.provider_name}`,
       },
     ],

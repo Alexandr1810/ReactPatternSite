@@ -6,7 +6,7 @@ export async function sendForm(formData){
     formData.title = `Заявка с сайта ${window.location.host}`;
     console.log('Форма', formData);
 
-    return await axios.post(`http://${server_config.site_folder}/front/sendDeal/${server_config.site_key}`, formData).then((response) => {
+    return await axios.post(`https://${server_config.site_folder}/front/sendDeal/${server_config.site_key}`, formData).then((response) => {
         console.log('Ответ сервера:', response.data);
         if(response.data.success){
             openModal('sendDone-modal');
