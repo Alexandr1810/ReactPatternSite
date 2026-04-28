@@ -18,6 +18,7 @@ import Metatags from '@/app/admin/components/sections/metatags.js'
 import AbbreviationsList from '@/app/admin/components/sections/abbreviationsList.js'
 import Mediateka from '@/app/admin/components/sections/mediateka.js'
 import Alerts from '@/app/admin/components/alerts/alerts.js'
+import ClearCacheButton from '@/app/admin/components/clearCacheButton.js'
 
 function PageAdmin({
   logo,
@@ -225,6 +226,9 @@ function PageAdmin({
           />
           <Alerts 
             activeAlert={activeAlert}
+          />
+          <ClearCacheButton
+          
           />
         </div>
       </div>

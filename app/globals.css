@@ -3131,7 +3131,11 @@ footer{
   rotate: 165deg;
   filter: var(--primary-filter);
 }
-
+.clearCacheButton{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
 
 /* ------------------- Админ панель ------------------- */
 /* ------------------- АДАПТИВ ------------------- */   

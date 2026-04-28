@@ -1,0 +1,8 @@
+// app/actions/revalidate.js
+'use server';
+
+import { revalidatePath } from 'next/cache';
+
+export async function clearCache() {
+  revalidatePath('/');
+}
