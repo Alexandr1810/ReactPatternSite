@@ -8,7 +8,7 @@ export async function loadOffers(isAdmin = false) {
   
   let allOffers_plans = null;
 
-  const res = await fetch(`https://${server_config.site_folder}/front/getOffers/${server_config.site_key}`, {
+  const res = await fetch(`${server_config.api_protocol}://${server_config.site_folder}/front/getOffers/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }
       : { next: { revalidate: server_config.сaching_period } })

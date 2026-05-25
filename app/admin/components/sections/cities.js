@@ -45,7 +45,7 @@ function Cities(props) {
         alert(`Не все поля заполнены!`)
         return;
       }
-      await axios.post(`https://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
+      await axios.post(`${server_config.api_protocol}://${server_config.site_folder}/back/update/site_config/${server_config.site_key}`, {
         site_config: {
           sortCity_regions: String(sortCity_regions)
         }
@@ -59,7 +59,7 @@ function Cities(props) {
         props.showAlert("errorAlert")
       })
 
-      await axios.post(`https://${server_config.site_folder}/back/update/cities_list/${server_config.site_key}`, {
+      await axios.post(`${server_config.api_protocol}://${server_config.site_folder}/back/update/cities_list/${server_config.site_key}`, {
         cities_list: cities_list
       },{
         withCredentials: true

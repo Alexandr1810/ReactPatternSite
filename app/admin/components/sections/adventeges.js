@@ -13,7 +13,7 @@ function Adventeges(props) {
     ]
     
     adventages_items_temp.forEach((item) => {
-      item.image = `https://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${item.original_image}`
+      item.image = `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/advantages/${item.original_image}`
     })
     setAdventages_items([...props.adventages_items])
   },[])
@@ -68,7 +68,7 @@ function Adventeges(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`https://${server_config.site_folder}/back/update/adventages/${server_config.site_key}`, {
+        await axios.post(`${server_config.api_protocol}://${server_config.site_folder}/back/update/adventages/${server_config.site_key}`, {
             adventages_items: adventages_items,
         },{
             withCredentials: true

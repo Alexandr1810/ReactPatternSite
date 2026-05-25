@@ -86,7 +86,7 @@ function Offers(props) {
             alert(`Не все поля заполнены!`)
             return;
         }
-        await axios.post(`https://${server_config.site_folder}/back/update/offers/${server_config.site_key}`, {
+        await axios.post(`${server_config.api_protocol}://${server_config.site_folder}/back/update/offers/${server_config.site_key}`, {
             offers: result,
         },{
             withCredentials: true

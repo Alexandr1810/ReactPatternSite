@@ -14,7 +14,7 @@ function Header(props) {
     (async () => {
         try {
             const res = await axios.get(
-                `https://${server_config.site_folder}/auth/me/${server_config.site_key}`,
+                `${server_config.api_protocol}://${server_config.site_folder}/auth/me/${server_config.site_key}`,
                 { withCredentials: true }
             );
             setUser_name(res.data.login);

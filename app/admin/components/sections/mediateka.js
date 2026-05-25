@@ -35,7 +35,7 @@ function Mediateka(props) {
     console.log(e.target.name)
     
     try {
-      const res = await axios.post(`https://${server_config.site_folder}/upload/${server_config.site_key}/${e.target.name}`, formData, {
+      const res = await axios.post(`${server_config.api_protocol}://${server_config.site_folder}/upload/${server_config.site_key}/${e.target.name}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -45,7 +45,7 @@ function Mediateka(props) {
                 ...prev,
                 {
                     name: res.data.filename,
-                    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
+                    src: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
                 },
             ]);
             break;
@@ -54,7 +54,7 @@ function Mediateka(props) {
                 ...prev,
                 {
                     name: res.data.filename,
-                    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
+                    src: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
                 },
             ]);
             break;
@@ -63,7 +63,7 @@ function Mediateka(props) {
                 ...prev,
                 {
                     name: res.data.filename,
-                    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
+                    src: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
                 },
             ]);
             break;
@@ -72,7 +72,7 @@ function Mediateka(props) {
                 ...prev,
                 {
                     name: res.data.filename,
-                    src: `https://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
+                    src: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/${e.target.name}/${res.data.filename}`,
                 },
             ]);
             break;

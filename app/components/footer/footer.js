@@ -2,6 +2,7 @@
 import Modals from './modals/modals'
 import { loadConfig, loadItemsConfig } from '@/app/utils/components-config'
 import { loadCities, setActiveCity } from '@/app/utils/getCities'
+import CitiesButton from './citiesButton'
 import ConnectionButton from './connectionButton'
 
 async function Footer({params_city}){
@@ -21,13 +22,14 @@ async function Footer({params_city}){
                                 :
                                 `Логотип ${site_config.genitive_provider_name}`
                             } 
-                            src={logo_small} 
+                            src={logo_small}
                         />
                     </a>
                     <nav>
                         <a href="#allOffers">Услуги и предложения</a>
                         <a href="#infoSection">Преимущества</a>
                         <a href="#questions">Вопросы</a>
+                        {!Number(site_config.show_city) ? <CitiesButton /> : ''}
                     </nav>
                     
                     <ConnectionButton /> {/* onClick={() => props.setDealModal({modalName: 'Оставьте заявку', showPhone: true, reachGoal: "zakazatPodkluchenie"})} */}
@@ -43,6 +45,7 @@ async function Footer({params_city}){
                 cities_list={cities_list} 
                 cities_list_original={cities_list_original}
                 connection_phone={site_config.connection_phone} 
+                support_phone={site_config.support_phone}
                 site_config={site_config} 
                 activeCity={activeCity}
                 params_city={params_city}

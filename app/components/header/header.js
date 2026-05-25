@@ -2,6 +2,7 @@ import { loadYMConfig } from '@/app/mods/YandexMetrika/YandexMetrika_config'
 import { loadConfig, loadItemsConfig } from '@/app/utils/components-config'
 import SupportLink from './supportLink'
 import ModalLink from './modalLink'
+import TpButton from './tpButton'
 import ConnectionButton from './connectionButton'
 import { setActiveCity } from '@/app/utils/getCities'
 
@@ -24,6 +25,7 @@ async function Header({params_city}){
                     }
                 </div>
                 <div className='headerTop-contactBlock'>
+                    {/*
                     <span className='headerTop-contactBlock-tp_desctop'>Техническая поддержка</span>
                     <span className='headerTop-contactBlock-tp_mobile'>Тех. Поддержка</span>
                     <SupportLink
@@ -31,6 +33,9 @@ async function Header({params_city}){
                         reachGoals={reachGoals}
                         hideSupportPhone={site_config.hideSupportPhone}
                     />
+                    */}
+
+                    <TpButton />
                 </div>
             </div>
             <div className='headerBottom'>
