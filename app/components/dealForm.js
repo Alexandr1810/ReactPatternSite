@@ -16,7 +16,7 @@ function Form ({
         activeCity,
         offer
     }){
-    const { utm_source, utm_medium, utm_campaign } = useUtm();
+    const { utm_source, utm_medium, utm_campaign, utm_content, utm_term } = useUtm();
     const [NullFields, setNullFields] = useState({}); // объект ошибок по обязательным полям
     const [ErrorFields, setErrorFields] = useState({}); // объект ошибок по обязательным полям
     const [isSending, setIsSending] = useState(false);
@@ -42,6 +42,8 @@ function Form ({
             utm_source: utm_source,
             utm_medium: utm_medium,
             utm_campaign: utm_campaign,
+            utm_content: utm_content,
+            utm_term: utm_term,
             ysclid: ysclid,
             yclid: yclid,
             counter: counter,
@@ -49,7 +51,7 @@ function Form ({
             formName: formName || 'Форма не определена',
             offer: offer ? `Название: ${offer.name} \n Ссылка: http://${window.location.host}/offer/${offer.id} \n Нужен роутер: ${offer.needRouter ? 'Да' : 'Нет'} \n Нужна приставка  ${offer.needPristavka ? 'Да' : 'Нет'}` : 'Не выбран',
         }));
-    }, [utm_source, utm_medium, utm_campaign, activeCity, formName, offer]);
+    }, [utm_source, utm_medium, utm_campaign, utm_content, utm_term, activeCity, formName, offer]);
 
     function normalizePhone(phone) {
         return phone.replace(/\D/g, '');
