@@ -1462,6 +1462,7 @@ main .allOffers {
   width: 150px;
   z-index: 1100;
 }
+
 /* Наполнение тарифа(скидка и оборудка) */
  
 /* Блок кинотеатров */
@@ -1582,6 +1583,12 @@ linear .2s;
 .elem-price-outDiscount{
   font-size: 14px;
   color: #07131e;
+}
+
+.elem-price .right-side .discount{
+  text-decoration: line-through;
+  text-decoration-color: #ff0000;
+  text-decoration-style: solid;
 }
 /* Блок цены за тариф */
 /*Стоимость подключения*/

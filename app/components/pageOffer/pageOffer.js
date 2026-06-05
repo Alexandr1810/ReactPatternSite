@@ -30,6 +30,7 @@ async function PageOffer({params_city, url_name}){
             />
             <OfferDescription 
                 /*activeOffer={item()}*/
+                url_name={url_name}
                 icons={main_icons}
                 site_config={site_config}
                 OfferDescriptions_items={OfferDescriptions_items}

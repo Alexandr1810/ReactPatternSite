@@ -53,7 +53,7 @@ function AllOffers_Item(props){
                         <span className='properties-item-text'>Без сложных настроек: включил — и смотри</span>
                     </div> }
                 </div>
-                {props.plan.discount_description &&
+                {(props.plan.discount_description && props.plan.discount_description !== '0') &&
                     <div className='saleBlock'>{props.plan.discount_description}</div>
                 }
                 <div className='elems'>
@@ -77,10 +77,12 @@ function AllOffers_Item(props){
                         <div className={props.plan.needRouter ? `left-side active` : `left-side`}>
                             <img src={props.icons.router_icon} />
                             <span>WiFi<br />Роутер</span>
-                            <div className="elemInfo">
-                                <img src={props.icons.i_icon} />
-                                <span>{props.plan.router_conditions}</span>
-                            </div>
+                            {(props.plan.router_conditions && props.plan.router_conditions !== '0') &&
+                                <div className="elemInfo">
+                                    <img src={props.icons.i_icon} />
+                                    <span>{props.plan.router_conditions}</span>
+                                </div>
+                            }
                         </div>
                         <div className='right-side'>
                             <label className="checkbox-ios" htmlFor={`needRouter_${props.plan.id}_${uid}`}>
@@ -95,10 +97,12 @@ function AllOffers_Item(props){
                         <div className={props.plan.needPristavka ? `left-side active` : `left-side`}>
                             <img src={props.icons.pristavka_icon} />
                             <span>ТВ<br />Приставка</span>
-                            <div className="elemInfo">
-                                <img src={props.icons.i_icon} />
-                                <span>{props.plan.pristavka_conditions}</span>
-                            </div>
+                            {(props.plan.pristavka_conditions && props.plan.pristavka_conditions !== '0') &&
+                                <div className="elemInfo">
+                                    <img src={props.icons.i_icon} />
+                                    <span>{props.plan.pristavka_conditions}</span>
+                                </div>
+                            }
                         </div>
                         <div className='right-side'>
                             <label className="checkbox-ios" htmlFor={`needPristavka_${props.plan.id}_${uid}`}>
@@ -128,15 +132,25 @@ function AllOffers_Item(props){
                     <div className='elem-price-wrapper'>
                         <div className='left-side'> 
                             {
-                            props.plan.discount_period ? props.plan.discount_price : props.plan.price
+                            (props.plan.discount_price || props.plan.discount_period) ? props.plan.discount_price : props.plan.price
                             }₽/мес
                         </div>
-                        {props.plan.discount_period > 0 &&
+                        {(props.plan.discount_period > 0)  && //скидка на время
                             <div className='right-side'>
                                 <span className='elem-price-periodText'>
                                     {props.pluralize(props.plan.discount_period, 'первый', 'первые', 'первые')} {props.plan.discount_period !== 1 ? props.plan.discount_period : ''} {props.pluralize(props.plan.discount_period, 'месяц', 'месяца', 'месяцев')}
                                 </span>
                                 <span className='elem-price-outDiscount'>далее {props.plan.price}₽/мес</span>
+                            </div>
+                        }
+                        {(props.plan.discount_period === 0 && props.plan.discount_price > 0)  && //скидка бессрочная
+                            <div className='right-side'> 
+                                <span className='elem-price-periodText'>
+                                    бессрочно
+                                </span>
+                                <span className='elem-price-outDiscount'>
+                                    вместо <span className='discount'>{props.plan.price}₽/мес</span>
+                                </span>
                             </div>
                         }
                     </div>

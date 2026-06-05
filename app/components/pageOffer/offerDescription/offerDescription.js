@@ -4,6 +4,7 @@ import OfferDescriptionText from './offerDescription-text';
 import OfferDescriptionItem from './offerDescription-item';
 
 import { useGlobalContext } from '@/app/utils/globalContext';
+import { notFound } from 'next/navigation';
 
 
 function OfferDescription(props){
@@ -11,9 +12,13 @@ function OfferDescription(props){
 
     const item = () => {
         if (props.url_name && offers) {
+            console.log('good')
+            console.log(props.url_name, offers)
+            console.log(offers.find(obj => obj.url_name === props.url_name))
+
             return offers.find(obj => obj.url_name === props.url_name);
         }else{
-            return activeOffer;
+            notFound();
         }
     };
     if(!item()){

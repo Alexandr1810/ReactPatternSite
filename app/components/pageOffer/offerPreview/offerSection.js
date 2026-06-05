@@ -4,6 +4,7 @@ import React from 'react'
 import Form from '@/app/components/dealForm'
 import AllOffers_Item from '@/app/components/pageMain/all_offers/allOffers_item'
 
+import { notFound } from 'next/navigation';
 import { useInView } from '@/app/components/hooks/useInView';
 import { useGlobalContext } from '@/app/utils/globalContext';
 
@@ -13,9 +14,13 @@ function OfferSection(props){
     
     const item = () => {
         if (props.url_name && offers) {
+            console.log('good')
+            console.log(props.url_name, offers)
+            console.log(offers.find(obj => obj.url_name === props.url_name))
+
             return offers.find(obj => obj.url_name === props.url_name);
         }else{
-            return activeOffer;
+            notFound();
         }
     };
     if(!item()){
@@ -27,7 +32,7 @@ function OfferSection(props){
             <AllOffers_Item
                 icons={props.icons}
                 toggleFieldById = {toggleFieldById}
-                plan={activeOffer}
+                plan={item()}
                 pluralize={props.pluralize}
                 modalItem={true}
             />
