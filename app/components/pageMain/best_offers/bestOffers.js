@@ -8,7 +8,12 @@ import { useGlobalContext } from '@/app/utils/globalContext';
 function Best_Offers({activeCity, main_icons, site_config }){    
     const { offers, toggleFieldById, setActiveOffer } = useGlobalContext() 
 
-    const bestOffers_plans = offers.filter(plan => plan.cities.includes(activeCity.city)).filter(plan => plan.bestOffer).sort((a, b) => Number(a.price) - Number(b.price))
+    //делаем так, что бы всегда было только 2 лучших оффера 
+    const bestOffers_plans = 
+        offers.filter(plan => plan.cities.includes(activeCity.city)).filter(plan => plan.bestOffer).length >= 2 ?
+        offers.filter(plan => plan.cities.includes(activeCity.city)).filter(plan => plan.bestOffer).sort((a, b) => Number(a.price) - Number(b.price)).slice(0, 2) :
+        offers.filter(plan => plan.cities.includes(activeCity.city)).sort((a, b) => Number(b.price) - Number(a.price)).slice(0, 2)
+
 
     console.log(bestOffers_plans)
     return(

@@ -2,6 +2,8 @@
 
 > **Примечание:** везде по тексту `domain_example` и `domain_example.ru` заменить на имя домена — с `.ru` и без соответственно.
 
+> **Важно:** Автоматически деплоить сайты можно строго по одному, так как если не добавить сайт в `ecosystem.config.js` - порт не будет зарезервирован за ним.
+
 ---
 
 ## 📋 Содержание
@@ -49,6 +51,12 @@ domainexample: {
 },
 ```
 
+2.1. Скопировать картинки для сайта (из последнего выгруженного или 100% стабильного)
+
+```bash
+cp -r /var/www/backend/uploads/megafonsite /var/www/backend/uploads/domainexample
+```
+
 3. Перезапустить бэкенд:
 
 ```bash
@@ -73,14 +81,11 @@ nano /var/www/ecosystem.config.js
 
 ```js
 {
-    name: "domainexample",
-    cwd: "/var/www/domain_example.ru",
-    script: "npm",
-    args: "start -- -p 3001", // Порт поменять
-    env: {
-        NODE_ENV: "production",
-        PORT: 3001 // Порт поменять
-    }
+  ...commonConfig,
+  name: "domainexample",
+  cwd: "/var/www/domain_example.ru",
+  args: "start -- -p 3001", // Порт поменять
+  env: { ...commonConfig.env, PORT: 3001 } // Порт поменять
 },
 ```
 

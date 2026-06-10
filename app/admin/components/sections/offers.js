@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import OfferRow from './offerRow'
+import UploadOffers from './UploadOffers'
 import axios from "axios";
 import {server_config} from '@/app/utils/server_config'
 
@@ -164,6 +165,7 @@ function Offers(props) {
             <button type='button' className='saveIcon-Button' onClick={saveOffers}></button>
           </div>
         </div>
+        <UploadOffers setAllOffers_plans={setAllOffers_plans} />
         
     </section>
   );

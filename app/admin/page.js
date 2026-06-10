@@ -1,5 +1,3 @@
-import { redirect } from 'next/navigation';
-import { server_config } from '@/app/utils/server_config';
 
 import PageAdmin from '@/app/admin/adminPage'
 
