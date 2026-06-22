@@ -348,6 +348,19 @@ ${emptyFields}`)
                         </div>
                     </div>
                 </label>
+                <label>
+                    <span className='label-title'>SEO индексация</span>
+                    <div className="radioContainer">
+                        <div className="radioItem">
+                            <input type='radio' name='seo_indexing' checked={site_config.seo_indexing ? Number(site_config.seo_indexing) : '0' } value="1" onChange={handleChange} />
+                            <span className='label-title'>Включена</span>
+                        </div>
+                        <div className="radioItem">
+                            <input type='radio' name='seo_indexing' checked={site_config.seo_indexing ? !Number(site_config.seo_indexing) : '0' } value="0" onChange={handleChange} />
+                            <span className='label-title'>Отключена</span>
+                        </div>
+                    </div>
+                </label>
                 <label><span className='label-title'>Телефон (поддержка):</span>
                 <input type='text' name='support_phone' placeholder='8 (800) 700-60-50' value={site_config.support_phone || ''} onChange={handleChange} />
                 </label>
