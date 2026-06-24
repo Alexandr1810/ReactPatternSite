@@ -23,6 +23,8 @@ async function Header({params_city}){
                             <ModalLink item={item} key={index}/>
                         ))
                     }
+                    
+                    <TpButton />
                 </div>
                 <div className='headerTop-contactBlock'>
                     {/*
@@ -35,7 +37,7 @@ async function Header({params_city}){
                     />
                     */}
 
-                    <TpButton />
+                    {/*<TpButton /> // КНОПКА ТП */}
                 </div>
             </div>
             <div className='headerBottom'>
@@ -59,7 +61,7 @@ async function Header({params_city}){
                 
                 <div className='headerBottom-rightSide'>
                     {/* Тут ричгол берем из конфига метрики */}
-                    <ConnectionButton />
+                    <ConnectionButton site_config={site_config} reachGoals={reachGoals} />
                 </div>
 
             </div>

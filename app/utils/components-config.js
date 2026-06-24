@@ -151,6 +151,8 @@ export async function loadItemsConfig(isAdmin = false) {
   let OfferDescriptions_items_undecoded = null;
   let OfferDescriptions_items = null;
 
+  console.log('конфиг', server_config)
+
   const res = await fetch(`${server_config.api_protocol}://${server_config.site_folder}/front/getItemsConfig/${server_config.site_key}`, {
     ...(isAdmin
       ? { cache: 'no-store' }

@@ -121,7 +121,7 @@ input[type="radio"] {
 }
 
 
-button{
+button, .header-btn{
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -133,9 +133,9 @@ button{
     font-weight: 600;
     transition: 0.2s;
 }
-button:hover{
+button:hover, .header-btn:hover{
     background-color: var(--secondary-color); 
-    color: black;
+    color: black !important;
 }
 a{
   transition: 0.2s;
@@ -196,11 +196,13 @@ header{
   background: #e6e6e6;
   color: black;
 }
-.headerTop-contactBlock-tp_desctop{
+.tp_desctop{
   display: block;
+  cursor: pointer;
 }
-.headerTop-contactBlock-tp_mobile{
+.tp_mobile{
   display: none;
+  cursor: pointer;
 }
 
 .headerBottom .headerBottom-leftSide{
@@ -3528,10 +3530,10 @@ footer{
     width: 85%;
     padding: 25px;
   }
-  .headerTop-contactBlock-tp_desctop{
+  .tp_desctop{
     display: none;
   }
-  .headerTop-contactBlock-tp_mobile{
+  .tp_mobile{
     display: block;
   }
   .banner .banner-component {

@@ -10,13 +10,13 @@ export default function TpButton() {
 
 
   return (
-    <button className="header-btn supportButton"
+    <a className=""
       onClick={() => {
           openModal('tpModal')
       }}
     >
-      <span className='headerTop-contactBlock-tp_desctop'>Техническая поддержка</span>
-      <span className='headerTop-contactBlock-tp_mobile'>Тех. Поддержка</span>
-    </button>
+      <span className='tp_desctop'>Техническая поддержка</span>
+      <span className='tp_mobile'>Тех. Поддержка</span>
+    </a>
   );
 }
