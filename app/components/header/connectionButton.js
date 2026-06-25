@@ -8,7 +8,6 @@ export default function ConnectionButton({site_config, reachGoals}) {
 
   const { setDealModal } = useGlobalContext();
 
-
   return (
     <a className="header-btn"
       onClick={()=>{

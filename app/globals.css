@@ -132,6 +132,8 @@ button, .header-btn{
     font-size: 15px;
     font-weight: 600;
     transition: 0.2s;
+    display: inline-block;
+    min-width: max-content;
 }
 button:hover, .header-btn:hover{
     background-color: var(--secondary-color); 
@@ -164,21 +166,22 @@ header{
 }
 .headerTop .headerTop-menuBlock{
     display: flex;
-    gap: 20px;    
+    gap: 20px;
 }
 .headerTop .headerTop-menuBlock a{
-    color: black; 
-    text-decoration: none;
-    font-weight: 600;
+  color: black; 
+  text-decoration: none;
+  font-weight: 600;
+  height: 22px;
 }
 .headerTop .headerTop-menuBlock a.active{
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 .headerTop .headerTop-contactBlock{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 5px;
 }
 #supportPhone{
   background-image: linear-gradient(90deg, var(--primary-color), rgba(0, 0, 0, .01) 80%);
@@ -204,7 +207,43 @@ header{
   display: none;
   cursor: pointer;
 }
-
+.tpButton{
+  display: flex;
+}
+.tpButton:before{
+  content: "";
+  background-image: var(--support);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  filter: var(--primary-filter);
+}
+.header-btn{
+  display: flex;
+  align-items: center;
+}
+.header-btn:before{
+  content: "";
+  background-image: var(--phone_1);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: 0px;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  transition: all .2s;
+  filter: invert();
+}
+.header-btn:hover:before{
+  filter: none;
+}
 .headerBottom .headerBottom-leftSide{
     display: flex;
     align-items: center;
@@ -3305,6 +3344,9 @@ footer{
   .advantages-additianal{
     height: 250px;
   }
+  .CityAlert{
+    display:none !important;
+  }
 }
 @media (max-width: 950px) {
   .headerBottom nav {
@@ -3425,6 +3467,9 @@ footer{
     font-size: 3em;
     text-align: center;
   }
+  .headerTop-menuBlock a:first-child{
+    display: none;
+  }
 }
 @media (max-width: 690px) {
   .banner .banner-component {
@@ -3506,6 +3551,12 @@ footer{
   .offerSection .offer-infoBlock{
     display: none;
   }
+  .headerTop-menuBlock a:nth-child(3){
+    display: none;
+  }
+  .headerTop-menuBlock a{
+    border-bottom: 2px solid var(--primary-color);
+  }
 }
 @media (max-width: 570px) {
   .slider .bg-layer{
@@ -3523,9 +3574,8 @@ footer{
   .slider-formBlock::after{
     border-radius: 20px;
   }
-  .headerTop-menuBlock a:first-child{
-    display: none;
-  }
+  
+  
   .slider-formBlock {
     width: 85%;
     padding: 25px;

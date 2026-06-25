@@ -10,7 +10,7 @@ export default function TpButton() {
 
 
   return (
-    <a className=""
+    <a className="tpButton"
       onClick={() => {
           openModal('tpModal')
       }}
