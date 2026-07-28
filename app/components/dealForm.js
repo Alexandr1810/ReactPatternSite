@@ -20,7 +20,7 @@ function Form ({
     const [NullFields, setNullFields] = useState({}); // объект ошибок по обязательным полям
     const [ErrorFields, setErrorFields] = useState({}); // объект ошибок по обязательным полям
     const [isSending, setIsSending] = useState(false);
-
+    
     // --- Получаем куки ---
 
     //Yclid
@@ -57,7 +57,7 @@ function Form ({
             formName: formName || 'Форма не определена',
             offer: offer ? `Название: ${offer.name} \n Ссылка: http://${window.location.host}/offer/${offer.id} \n Нужен роутер: ${offer.needRouter ? 'Да' : 'Нет'} \n Нужна приставка  ${offer.needPristavka ? 'Да' : 'Нет'}` : 'Не выбран',
         }));
-    }, [utm_source, utm_medium, utm_campaign, utm_content, utm_term, activeCity, formName, offer]);
+    }, [utm_source, utm_medium, utm_campaign, utm_content, utm_term, ysclid, yclid, counter, activeCity, formName, offer]);
 
     function normalizePhone(phone) {
         return phone.replace(/\D/g, '');
