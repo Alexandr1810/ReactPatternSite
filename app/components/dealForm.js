@@ -31,6 +31,8 @@ function Form ({
     
     //Counter
     const counter = getCookie('y_counter_id');        //UF_CRM_1716276864105
+
+    console.log('counter', counter)
     
     const [form, setForm] = useState({
         name: '',
