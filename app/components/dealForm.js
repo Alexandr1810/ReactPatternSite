@@ -21,11 +21,15 @@ function Form ({
     const [ErrorFields, setErrorFields] = useState({}); // объект ошибок по обязательным полям
     const [isSending, setIsSending] = useState(false);
 
-    // Получаем куки
-    const ysclid = getCookie('0') ?? getCookie('_ym_uid');         //UF_CRM_1714623527891 // Возможно правильнее поменять местами, но вроде и так норм работает
+    // --- Получаем куки ---
 
-    const yclid = getCookie('_ym_uid') ?? "";               //UF_CRM_1721476616007
-
+    //Yclid
+    const ysclid = getCookie('ym_client_id');         //UF_CRM_1714623527891 // Раньше получал из _ym_uid
+    
+    //ClientID
+    const yclid = getCookie('ym_client_id');               //UF_CRM_1721476616007
+    
+    //Counter
     const counter = getCookie('y_counter_id');        //UF_CRM_1716276864105
     
     const [form, setForm] = useState({
