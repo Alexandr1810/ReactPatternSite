@@ -178,7 +178,7 @@ function TarifPreview(props){
                 }}
                 href={`/${props.activeCity.code}/offer/${props.plan.url_name}`} 
                 aria-label="Перейти к тарифу"
-            ><svg xmlns="http://www.w3.org/2000/svg" role="img" width="32" height="32" className="sc-e7ab66e9-0 jaeEaw sc-12037ea7-0 esAZvG sc-b2685e77-0 hrepvk" id="info-circle-flip" viewBox="0 0 24 24"><g id="contour"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></g><g id="guts"><path d="M12 16V11" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12.0055 8H11.9965" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
+            ><svg alt="Дополнительно о тарифе" xmlns="http://www.w3.org/2000/svg" role="img" width="32" height="32" className="sc-e7ab66e9-0 jaeEaw sc-12037ea7-0 esAZvG sc-b2685e77-0 hrepvk" id="info-circle-flip" viewBox="0 0 24 24"><g id="contour"><path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></g><g id="guts"><path d="M12 16V11" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12.0055 8H11.9965" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></g></svg>
             </a>
         </div>
     </div>

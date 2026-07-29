@@ -24,6 +24,10 @@ export async function generateMetadata() {
 
   let title, description;
 
+  const seo_indexing = Number(site_config.seo_indexing) ? true : false;
+
+  console.log('seo_indexing', seo_indexing)
+
   if (server_config.site_key !== 'domatelecom') {
     title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в Вашем городе.`;
     description = `Актуальные тарифы на домашний интернет и ТВ от ${site_config.genitive_provider_name} в Вашем городе! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
@@ -38,6 +42,15 @@ export async function generateMetadata() {
       icon: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
       shortcut: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
       apple: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
+    },
+    robots: {
+      index: seo_indexing,
+      follow: seo_indexing,
+      // опционально, для гугл-бота отдельно:
+      googleBot: {
+        index: seo_indexing,
+        follow: seo_indexing,
+      },
     },
     openGraph: { // Мета-штуки
       title: title,
@@ -60,7 +73,6 @@ export async function generateMetadata() {
     verification: {
       yandex: reachGoals.yandex_verification,
     },
-
   };
 }
 
