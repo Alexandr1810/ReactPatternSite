@@ -25,8 +25,9 @@ export async function generateMetadata() {
   let title, description;
 
   const seo_indexing = Number(site_config.seo_indexing) ? true : false;
+  const canonical_enabled = site_config.canonical_url.includes('http');
+  const canonical_url = site_config.canonical_url;
 
-  console.log('seo_indexing', seo_indexing)
 
   if (server_config.site_key !== 'domatelecom') {
     title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в Вашем городе.`;
@@ -52,6 +53,11 @@ export async function generateMetadata() {
         follow: seo_indexing,
       },
     },
+    ...(canonical_enabled ? {
+      alternates: {
+        canonical: canonical_url,
+      },
+    } : {}),
     openGraph: { // Мета-штуки
       title: title,
       description: description,

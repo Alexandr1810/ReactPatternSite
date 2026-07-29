@@ -23,6 +23,10 @@ export async function generateMetadata({params}) {
   
   let title, description = '';
 
+  const seo_indexing = Number(site_config.seo_indexing) ? true : false;
+  const canonical_enabled = site_config.canonical_url.includes('http');
+  const canonical_url = site_config.canonical_url;
+
   if (server_config.site_key !== 'domatelecom') {
     title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
 
@@ -57,6 +61,20 @@ export async function generateMetadata({params}) {
       shortcut: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
       apple: `${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/favicon/favicon-32x32.png`,
     },
+    robots: {
+      index: seo_indexing,
+      follow: seo_indexing,
+      // опционально, для гугл-бота отдельно:
+      googleBot: {
+        index: seo_indexing,
+        follow: seo_indexing,
+      },
+    },
+    ...(canonical_enabled ? {
+      alternates: {
+        canonical: canonical_url,
+      },
+    } : {}),
     openGraph: { // Мета-штуки
       title: title,
       description: description,

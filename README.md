@@ -93,6 +93,10 @@ nano /var/www/ecosystem.config.js
 pm2 start ecosystem.config.js
 ```
 
+```bash
+pm2 save
+```
+
 ---
 
 ### Вручную
@@ -208,6 +212,10 @@ nano /var/www/ecosystem.config.js
 
 ```bash
 pm2 start ecosystem.config.js
+```
+
+```bash
+pm2 save
 ```
 
 ---
