@@ -361,6 +361,19 @@ ${emptyFields}`)
                         </div>
                     </div>
                 </label>
+                <label>
+                    <span className='label-title'>Показывать номер</span>
+                    <div className="radioContainer">
+                        <div className="radioItem">
+                            <input type='radio' name='show_phone' checked={site_config.show_phone ? Number(site_config.show_phone) : '0' } value="1" onChange={handleChange} />
+                            <span className='label-title'>Да</span>
+                        </div>
+                        <div className="radioItem">
+                            <input type='radio' name='show_phone' checked={site_config.show_phone ? !Number(site_config.show_phone) : '0' } value="0" onChange={handleChange} />
+                            <span className='label-title'>Нет</span>
+                        </div>
+                    </div>
+                </label>
                 <label><span className='label-title'>Телефон (поддержка):</span>
                 <input type='text' name='support_phone' placeholder='8 (800) 700-60-50' value={site_config.support_phone || ''} onChange={handleChange} />
                 </label>

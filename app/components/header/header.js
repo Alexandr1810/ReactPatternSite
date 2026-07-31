@@ -61,7 +61,8 @@ async function Header({params_city}){
                 
                 <div className='headerBottom-rightSide'>
                     {/* Тут ричгол берем из конфига метрики */}
-                    <ConnectionButton site_config={site_config} reachGoals={reachGoals} />
+
+                    {Number(site_config.show_phone) ? <ConnectionButton site_config={site_config} reachGoals={reachGoals}/> : ''}
                 </div>
 
             </div>
