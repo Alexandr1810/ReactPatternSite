@@ -19,8 +19,8 @@ async function Header({params_city}){
                     {/* Тут ричгол берем из конфига шапки */}
                     {
                         header_links.map((item, index) => (
-                            item.active && 
-                            <ModalLink item={item} key={index}/>
+                            item.active ? 
+                            <ModalLink item={item} key={index}/> : ''
                         ))
                     }
                     

@@ -11,7 +11,7 @@ function MapForm({site_config, activeCity, map_img, reachGoals}){
             <div className='mapFormSection-container'>
                 <div className='mapFormSection-form'>
                     <span className='mapFormSection-form-title'>Проверить адрес</span>
-                    <Form reachGoal="formAdressCheck" reachGoals={reachGoals} formId="mapForm"  formName="Заявка на проверку адреса" activeCity={activeCity.city} />
+                    <Form site_config = {site_config} reachGoal="formAdressCheck" reachGoals={reachGoals} formId="mapForm"  formName="Заявка на проверку адреса" activeCity={activeCity.city} />
                 </div>
                 <div className='mapFormSection-map'>
                     <img 

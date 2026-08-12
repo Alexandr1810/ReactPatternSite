@@ -20,6 +20,7 @@ async function Modals({icons, logo_small, cities_list, cities_list_original, act
                 logo_small={logo_small}
                 activeCity={activeCity}
                 reachGoals={reachGoals}
+                site_config={site_config}
             />
             <CityModal 
                 closeModal={closeModal}
@@ -48,6 +49,7 @@ async function Modals({icons, logo_small, cities_list, cities_list_original, act
                 connection_phone={connection_phone} 
                 activeCity={activeCity}
                 reachGoals={reachGoals}
+                site_config={site_config}
             />
             <TpModal 
                 closeModal={closeModal}

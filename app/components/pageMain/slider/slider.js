@@ -116,6 +116,7 @@ function Slider({slider_slides, activeCity, site_config, reachGoals}){
                         formId="mainModalForm" 
                         formName="Главная (Оставить заявку)" 
                         activeCity={activeCity.city} 
+                        site_config = {site_config}
                     />
                 </div>
             </div>

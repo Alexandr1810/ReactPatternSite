@@ -14,7 +14,8 @@ function Form ({
         formId,
         formName,
         activeCity,
-        offer
+        offer,
+        site_config
     }){
     const { utm_source, utm_medium, utm_campaign, utm_content, utm_term } = useUtm();
     const [NullFields, setNullFields] = useState({}); // объект ошибок по обязательным полям
@@ -38,6 +39,7 @@ function Form ({
         name: '',
         tel: '',
         addres: '',
+        type_of_house: '1',
         city: activeCity || '',
         politicCheckbox: false
     });
@@ -69,6 +71,7 @@ function Form ({
     function handleChange(e) {
         const { name, value, checked } = e.target;
         console.log(e.target);
+
         setForm(prev => ({
             ...prev,
             [name]: name === 'politicCheckbox' ? checked : value
@@ -122,7 +125,8 @@ function Form ({
                 ...form,
                 name: '',
                 tel: '',
-                addres: ''
+                addres: '',
+                type_of_house: '1'
             });
 
             //Открываем кнопку отправки
@@ -179,6 +183,16 @@ function Form ({
             />
             <label htmlFor='addres' className={`form-field ${NullFields.addres ? 'NullFields' : ''} ${ErrorFields.addres ? 'ErrorFields' : ''}`}>Адрес подключения:</label>
             <input type="text" value={form.addres} name="addres" placeholder='Введите адрес' onChange={handleChange} />
+            
+            
+            {Number(site_config.show_type_of_house) ? <div className='changeBlock'>
+                <label>Жилое помещение (Квартира)?</label>
+                <div className='changeBlock-inner'>
+                    <label><input type='radio' name='type_of_house' value="1" checked={form.type_of_house ? Number(form.type_of_house) : '0'} onChange={handleChange} /> Да</label>
+                    <label><input type='radio' name='type_of_house' value="0" checked={form.type_of_house ? !Number(form.type_of_house) : '0'} onChange={handleChange} /> Нет</label>
+                </div>
+            </div> : ''}
+            
             <label className='politicBlock'>
                 <input type='checkbox' className={`politicCheckbox ${NullFields.politicCheckbox ? 'NullFields' : ''}`} name='politicCheckbox' onChange={handleChange} />
                 <span className='politicText'>Я подтверждаю ознакомление с <a href={`${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/politics/politika.pdf`} target="_blank" >Политикой обработки персональных данных</a> и даю <a href={`${server_config.api_protocol}://${server_config.site_folder}/uploads/${server_config.site_key}/politics/sogl.pdf`} target="_blank" >Согласие на обработку моих персональных данных.</a></span>

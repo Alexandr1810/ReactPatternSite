@@ -10,6 +10,7 @@ import { loadStyles } from '@/app/utils/style-config'
 import { loadYMConfig } from '@/app/mods/YandexMetrika/YandexMetrika_config.js'
 import YandexMetrikaWithB242YA from '@/app/mods/YandexMetrika/YandexMetrika.js';
 
+import PixelVictory from '@/app/utils/PixelVictory'
 
 import { server_config } from '@/app/utils/server_config.js'
 
@@ -99,6 +100,7 @@ export default async function RootLayout({ children }) {
         <GlobalContext initialOffers={allOffers_plans}>
           {children}
         </GlobalContext>
+        <PixelVictory />
         <YandexMetrikaWithB242YA counter={reachGoals.ym_counter} />
       </body>
     </html>

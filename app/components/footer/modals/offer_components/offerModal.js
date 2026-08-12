@@ -7,7 +7,7 @@ import { useGlobalContext } from '@/app/utils/globalContext';
 import { pluralize } from '@/app/utils/functions'
 
 
-function OfferModal({closeModal, icons, logo_small, activeCity, reachGoals}){
+function OfferModal({closeModal, icons, logo_small, activeCity, reachGoals, site_config}){
     const { toggleFieldById, activeOffer } = useGlobalContext() 
     return(
         <div className='modal' id="offerModal">
@@ -33,7 +33,7 @@ function OfferModal({closeModal, icons, logo_small, activeCity, reachGoals}){
                     </div>
                     <div className='offer-formBlock'>
                         <span className='modal-header-title'>Оставить заявку</span>
-                        <Form reachGoal="zakazatPodkluchenie" reachGoals={reachGoals} formName="Офер (Оставить заявку)" formId="offerModalForm" offer={activeOffer} activeCity={activeCity} />
+                        <Form site_config={site_config} reachGoal="zakazatPodkluchenie" reachGoals={reachGoals} formName="Офер (Оставить заявку)" formId="offerModalForm" offer={activeOffer} activeCity={activeCity} />
                     </div>
                     
                 </div>

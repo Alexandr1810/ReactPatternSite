@@ -27,6 +27,7 @@ async function PageOffer({params_city, url_name}){
                 logo_small={logo_small}
                 activeCity={activeCity}
                 reachGoals={reachGoals}
+                site_config={site_config}
             />
             <OfferDescription 
                 /*activeOffer={item()}*/

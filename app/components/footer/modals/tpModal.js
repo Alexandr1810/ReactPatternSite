@@ -22,7 +22,7 @@ export default function TpModal({icons, logo_small, activeCity, support_phone, r
                         <img src={logo_small} />
                         <span>Техническая поддержка</span>
                     </div>
-                    {dealModal.showPhone && 
+                    {dealModal.showPhone &&
                         <div className='dealModal-phoneBlock' style={{width: "fit-content"}}>
                             <span className='dealModal-phoneBlock-title'>Позвоните нам по номеру <a onClick={()=>{
                                 console.log(1)

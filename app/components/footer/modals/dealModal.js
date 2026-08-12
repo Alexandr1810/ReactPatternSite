@@ -7,7 +7,7 @@ import { useGlobalContext } from '@/app/utils/globalContext';
 import {closeModal} from '@/app/utils/functions'
 
 
-export default function DealModal({icons, logo_small, activeCity, connection_phone, reachGoals }){ 
+export default function DealModal({icons, logo_small, activeCity, connection_phone, reachGoals, site_config }){ 
     const { dealModal } = useGlobalContext()
 
     return(
@@ -23,7 +23,7 @@ export default function DealModal({icons, logo_small, activeCity, connection_pho
                         <img src={logo_small} />
                         <span>Подключиться прямо сейчас: <br />быстро и удобно!</span>
                     </div>
-                    {dealModal.showPhone && 
+                    {(dealModal.showPhone && Number(site_config.show_phone)) ? 
                         <div className='dealModal-phoneBlock'>
                             <span className='dealModal-phoneBlock-title'>Позвоните нам по номеру <a onClick={()=>{
                                 console.log(1)
@@ -35,11 +35,11 @@ export default function DealModal({icons, logo_small, activeCity, connection_pho
                                 }
                             }} href={`tel:${connection_phone}`}><b>{connection_phone}</b></a></span>
                             <span className='dealModal-phoneBlock-or'>или</span>
-                        </div>
+                        </div> : ''
                     }
                     <div className='dealModal-formBlock'>
                         <span className='dealModal-formBlock-title'>{dealModal.modalName}</span>
-                        <Form formName={`${dealModal.modalName} (Модальное окно)`} reachGoals={reachGoals} formId="modalForm" reachGoal={dealModal.reachGoal} activeCity={activeCity} />
+                        <Form site_config={site_config} formName={`${dealModal.modalName} (Модальное окно)`} reachGoals={reachGoals} formId="modalForm" reachGoal={dealModal.reachGoal} activeCity={activeCity} />
                     </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@ function OfferSection(props){
                 </div>
                 <div className='offerSection-form'>
                     <span className='mapFormSection-form-title'>Оставить заявку</span>
-                    <Form reachGoal="formTarifPage" reachGoals={props.reachGoals} formId="offerPageForm"  formName="Страница тарифа (Оставить заявку)" offer={activeOffer} activeCity={props.activeCity} />
+                    <Form site_config={props.site_config} reachGoal="formTarifPage" reachGoals={props.reachGoals} formId="offerPageForm"  formName="Страница тарифа (Оставить заявку)" offer={activeOffer} activeCity={props.activeCity} />
                 </div>
             </div>
         </section>

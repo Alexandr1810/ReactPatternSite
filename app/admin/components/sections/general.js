@@ -374,6 +374,24 @@ ${emptyFields}`)
                         </div>
                     </div>
                 </label>
+                <label><span className='label-title'>Создавать сделки в стадии: (базовая)</span>
+                <input type='text' name='base_stage' placeholder='NEW' value={site_config.base_stage || ''} onChange={handleChange} />
+                </label>
+                <label>
+                    <span className='label-title hasDescription'>Показывать поле "Жилое/Не жилое"
+                        <div className='label-decription'>При выборе клиентом типа помещения "Жилое" сделки будут содаваться в базовой стадии(поле выше), при выборе "Не жилое" - сделка будет создана в стадии Сделана(PREPAYMENT_INVOICE) </div>
+                    </span>
+                    <div className="radioContainer">
+                        <div className="radioItem">
+                            <input type='radio' name='show_type_of_house' checked={site_config.show_type_of_house ? Number(site_config.show_type_of_house) : '0' } value="1" onChange={handleChange} />
+                            <span className='label-title'>Да</span>
+                        </div>
+                        <div className="radioItem">
+                            <input type='radio' name='show_type_of_house' checked={site_config.show_type_of_house ? !Number(site_config.show_type_of_house) : '0' } value="0" onChange={handleChange} />
+                            <span className='label-title'>Нет</span>
+                        </div>
+                    </div>
+                </label>
                 <label><span className='label-title'>Телефон (поддержка):</span>
                 <input type='text' name='support_phone' placeholder='8 (800) 700-60-50' value={site_config.support_phone || ''} onChange={handleChange} />
                 </label>
