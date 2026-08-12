@@ -84,6 +84,7 @@ export async function generateMetadata() {
 }
 
 export default async function RootLayout({ children }) {
+  const site_config = await loadConfig();
   const { reachGoals } = await loadYMConfig()
 
   const styleConfig = await loadStyles();
@@ -100,7 +101,7 @@ export default async function RootLayout({ children }) {
         <GlobalContext initialOffers={allOffers_plans}>
           {children}
         </GlobalContext>
-        <PixelVictory />
+        {Number(site_config.victorycorp) ? <PixelVictory /> : ''}
         <YandexMetrikaWithB242YA counter={reachGoals.ym_counter} />
       </body>
     </html>
