@@ -362,6 +362,19 @@ ${emptyFields}`)
                     </div>
                 </label>
                 <label>
+                    <span className='label-title'>Адаптировать Мету под Юр'ов</span>
+                    <div className="radioContainer">
+                        <div className="radioItem">
+                            <input type='radio' name='yr_typeOf_site' checked={site_config.yr_typeOf_site ? Number(site_config.yr_typeOf_site) : '0' } value="1" onChange={handleChange} />
+                            <span className='label-title'>Да</span>
+                        </div>
+                        <div className="radioItem">
+                            <input type='radio' name='yr_typeOf_site' checked={site_config.yr_typeOf_site ? !Number(site_config.yr_typeOf_site) : '0' } value="0" onChange={handleChange} />
+                            <span className='label-title'>Нет</span>
+                        </div>
+                    </div>
+                </label>
+                <label>
                     <span className='label-title'>Показывать номер</span>
                     <div className="radioContainer">
                         <div className="radioItem">

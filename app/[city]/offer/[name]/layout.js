@@ -27,20 +27,7 @@ export async function generateMetadata({params}) {
   const canonical_enabled = site_config.canonical_url.includes('http');
   const canonical_url = site_config.canonical_url;
 
-  if (server_config.site_key !== 'domatelecom') {
-    title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
-
-    if (tarif.services.includes('internet')) {
-      description += `Домашний Интернет со скоростью ${tarif.speed} Мб/сек`
-    }
-    if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
-      description += ` и ТВ на ${tarif.tv} каналов`
-    }
-    else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
-      description += `ТВ на ${tarif.tv} каналов`
-    }
-    description += ` в городе ${activeCity.city} по цене ${tarif.price} Р/мес. Подключайся выгодно!`
-  }else{
+  if (server_config.site_key === 'domatelecom') {  // Только домателеком
     title = `${site_config.provider_name} | Тариф ${tarif.name}`;
     
     if (tarif.services.includes('internet')) {
@@ -53,6 +40,34 @@ export async function generateMetadata({params}) {
       description += `ТВ на ${tarif.tv} каналов`
     }
     description += `по цене ${tarif.price} Р/мес. Подключайся выгодно!`
+  }
+  else if(Number(site_config.yr_typeOf_site)){   // Сайты под юриков
+    title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
+
+    if (tarif.services.includes('internet')) {
+      description += `Интернет для бизнеса со скоростью ${tarif.speed} Мб/сек`
+    }
+    if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
+      description += ` и ТВ на ${tarif.tv} каналов`
+    }
+    else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
+      description += `ТВ на ${tarif.tv} каналов`
+    }
+    description += ` в городе ${activeCity.city} по цене ${tarif.price} Р/мес. Подключайся выгодно!`
+  }
+  else{                                            //Все сайты
+    title = `${site_config.provider_name} в городе ${activeCity.city} | Тариф ${tarif.name}`;
+
+    if (tarif.services.includes('internet')) {
+      description += `Домашний Интернет со скоростью ${tarif.speed} Мб/сек`
+    }
+    if (tarif.services.includes('internet') && (tarif.services.includes('iptv') || tarif.services.includes('ktv'))) {
+      description += ` и ТВ на ${tarif.tv} каналов`
+    }
+    else if(tarif.services.includes('iptv') || tarif.services.includes('ktv')){
+      description += `ТВ на ${tarif.tv} каналов`
+    }
+    description += ` в городе ${activeCity.city} по цене ${tarif.price} Р/мес. Подключайся выгодно!`
   }
 
   return {

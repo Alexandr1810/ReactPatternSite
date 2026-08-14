@@ -19,13 +19,17 @@ export async function generateMetadata({params}) {
   const canonical_enabled = site_config.canonical_url.includes('http');
   const canonical_url = site_config.canonical_url;
 
-  if (server_config.site_key !== 'domatelecom') {
-    title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в городе ${activeCity.city}.`;
-    description = `Актуальные тарифы на домашний интернет и ТВ от ${site_config.genitive_provider_name} в г.${activeCity.city}! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
-  } 
-  else{
+  if (server_config.site_key === 'domatelecom') {  // Только домателеком
     title = `${site_config.provider_name} — подбор тарифов на интернет и телевидение по всей России.`;
     description = `Бесплатный подбор провайдеров и тарифов на интернет и телевидение по всей России! Поможем подключить интернет быстро и без проблем.☎️Бесплатная консультация ${site_config.connection_phone}.`;
+  } 
+  else if(Number(site_config.yr_typeOf_site)){   // Сайты под юриков
+    title = `${site_config.provider_name} | Подключение интернета и видеонаблюдения для бизнеса в городе ${activeCity.city}.`;
+    description = `Актуальные тарифы на интернет для бизнеса от ${site_config.genitive_provider_name} в г.${activeCity.city}! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
+  }
+  else{                                            //Все сайты
+    title = `${site_config.provider_name} | Подключение домашнего интернета и ТВ в городе ${activeCity.city}.`;
+    description = `Актуальные тарифы на домашний интернет и ТВ от ${site_config.genitive_provider_name} в г.${activeCity.city}! Скидки до -50% новым абонентам.☎️Бесплатная консультация ${site_config.connection_phone}.`;
   }
   return {
     icons: {
